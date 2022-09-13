@@ -1,0 +1,35 @@
+@use 'partials/variables' as v;
+
+// NAVBAR
+nav {
+    background-color: v.$color_1;
+
+    a:hover {
+        transition: all 0.3s linear;
+        color: v.$color_3 !important;
+        text-shadow: 0 0 10px v.$color_3;
+    }
+}
+
+// MENU
+.menuBg {
+    background-color: v.$color_3;
+
+    ul {
+        padding: 0;
+        margin: 10px;
+
+        li {
+            list-style: none;
+            
+            a {
+                font-size: v.$font_size1;
+                color: v.$color_1;
+
+                &:hover { // TODO A modifier dans bootstrap
+                    color: v.$color_1;
+                }
+            }
+        }
+    }
+}

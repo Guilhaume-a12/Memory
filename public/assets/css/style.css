@@ -1,3 +1,28 @@
+nav {
+  background-color: #2E4052;
+}
+nav a:hover {
+  transition: all 0.3s linear;
+  color: #FFC857 !important;
+  text-shadow: 0 0 10px #FFC857;
+}
 
+.menuBg {
+  background-color: #FFC857;
+}
+.menuBg ul {
+  padding: 0;
+  margin: 10px;
+}
+.menuBg ul li {
+  list-style: none;
+}
+.menuBg ul li a {
+  font-size: 36px;
+  color: #2E4052;
+}
+.menuBg ul li a:hover {
+  color: #2E4052;
+}
 
 /*# sourceMappingURL=style.css.map */
