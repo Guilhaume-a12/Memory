@@ -1,0 +1,14 @@
+# Ce fichier nous permet de réécrire l'url, peut importe l'url qu'on passe, tout ira dans index.php
+# et tout les paramètre dans $_GET['url']
+
+<IfModule mod_rewrite.c>
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+</IfModule>
