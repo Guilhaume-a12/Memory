@@ -29,10 +29,13 @@
     </nav>
 
     <div class="container text-center">
-        <?= $content ?>
+        <!-- Comme le template est require sur les différentes vues, on peut utiliser la variable $content
+        pour afficher notre vue à cette endroit précis du template -->
+        <?= $content ?> 
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="<?=ROOT?>assets/javascript/script.js"></script>
 </body>
 
 </html>
