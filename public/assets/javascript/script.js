@@ -1,8 +1,9 @@
 //On stock les éléments dont on a besoin
 const section = document.querySelector(".memorySection");
 
-// On déclare une variable qui nous permettra de bloquer les clic
+// On déclare nos variables
 let blocked = false;
+let gameStarted = false;
 
 // On génère les données des cartes en objet
 const getData = () => [
@@ -72,45 +73,69 @@ const cardGenerator = () => {
 
     card.addEventListener("click", (e) => {
       // quand on clic sur une carte, on ajoute la classe 'toggleCard'
-        console.log(item);
-          card.classList.toggle("toggleCard");
-          card.style.pointerEvents = "none";
-          checkCards(e);
+      console.log(item);
+      card.classList.toggle("toggleCard");
+      card.style.pointerEvents = "none";
+      checkCards(e);
     });
   });
 };
 
 // on check les cartes
 const checkCards = (e) => {
-    const clickedCard = e.target;
-    clickedCard.classList.add("flipped");
-    const flippedCards = document.querySelectorAll(".flipped");
-    const toggleCard = document.querySelectorAll(".toggleCard");
+  const clickedCard = e.target;
+  clickedCard.classList.add("flipped");
+  const flippedCards = document.querySelectorAll(".flipped");
+  const toggleCard = document.querySelectorAll(".toggleCard");
 
-    if (flippedCards.length === 2) {
-      if (
-        flippedCards[0].getAttribute("name") ===
-        flippedCards[1].getAttribute("name")
-      ) {
-        console.log("match");
-        flippedCards.forEach((card) => {
-          card.classList.remove("flipped");
-          card.style.pointerEvents = "none";
-        });
-      } else {
-        console.log("wrong");
-        flippedCards.forEach((card) => {
-          card.classList.remove("flipped");
-          setTimeout(() => card.classList.remove("toggleCard"), 1100);
-          setTimeout(() => card.removeAttribute("style"), 1100);
-          
-        });
-      }
+  if (flippedCards.length === 2) {
+    if (
+      flippedCards[0].getAttribute("name") ===
+      flippedCards[1].getAttribute("name")
+    ) {
+      console.log("match");
+      flippedCards.forEach((card) => {
+        card.classList.remove("flipped");
+        card.style.pointerEvents = "none";
+      });
+    } else {
+      console.log("wrong");
+      flippedCards.forEach((card) => {
+        card.classList.remove("flipped");
+        setTimeout(() => card.classList.remove("toggleCard"), 1100);
+        setTimeout(() => card.removeAttribute("style"), 1100);
+      });
     }
+  }
 
   if (toggleCard.length === 28) {
-    setTimeout(() => alert("GG well played !"), 1100);
+    setTimeout(() => {
+      alert("GG well played !");
+      if (confirm('Voulez vous rejouer ?')) {
+        restart();
+      } else {
+        window.location.href ="menu";
+      }
+    }, 1100);
   }
 };
+
+// Fonction qui permet de recommencer à la fin d'une partie
+const restart = () => {
+  let cardData = randomize();
+  let faces = document.querySelectorAll('.face');
+  let cards = document.querySelectorAll('.card');
+  section.style.pointerEvents = "none";
+
+  cardData.forEach((item, index) => {
+    cards[index].classList.remove('toggleCard');
+    setTimeout(() => {
+      cards[index].removeAttribute("style");
+      faces[index].src = item.imgSrc;
+      cards[index].setAttribute('name', item.name);
+      section.removeAttribute("style");
+    }, 1100);
+  });
+}
 
 cardGenerator();

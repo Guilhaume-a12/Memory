@@ -1,8 +1,25 @@
 @use 'partials/variables' as v; // Appelle le fichier qui contient toutes nos variables
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 // NAVBAR
 nav {
     background-color: v.$color_1;
+    width: 100%;
+    position: absolute !important;
+    top: 0;
 
     a:hover {
         transition: all 0.3s linear;
@@ -14,6 +31,7 @@ nav {
 // MENU
 .menuBg {
     background-color: v.$color_3;
+    height: 500px;
 
     ul {
         padding: 0;
@@ -40,12 +58,12 @@ nav {
     grid-template-columns: repeat(7,7rem);
     grid-template-rows: repeat(4,7rem);
     gap: 2rem;
-    perspective: 800px;
+    // perspective: 800px;
 
     .card {
         position: relative;
         transform-style: preserve-3d;
-        transition: all 1s ease-in-out;
+        transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         box-shadow: rgba(0, 0, 0,0.5) 0px 5px 15px;
         cursor: pointer;
     }

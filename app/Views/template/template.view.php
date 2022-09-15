@@ -11,8 +11,10 @@
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <?php
+    if (!$navHidden) {
+    ?>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="<?= ROOT ?>menu">O'Memory</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,6 +29,9 @@
             </div>
         </div>
     </nav>
+    <?php
+    }
+    ?>
 
     <!-- Comme le template est require sur les différentes vues, on peut utiliser la variable $content
         pour afficher notre vue à cette endroit précis du template -->
