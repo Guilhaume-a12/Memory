@@ -71,13 +71,18 @@ const cardGenerator = () => {
     //  </div>
     //</div>
 
+   
     card.addEventListener("click", (e) => {
+      if (!blocked) {
       // quand on clic sur une carte, on ajoute la classe 'toggleCard'
-      console.log(item);
       card.classList.toggle("toggleCard");
       card.style.pointerEvents = "none";
       checkCards(e);
+    } else {
+      console.log('clics bloqués');
+    }
     });
+
   });
 };
 
@@ -89,6 +94,8 @@ const checkCards = (e) => {
   const toggleCard = document.querySelectorAll(".toggleCard");
 
   if (flippedCards.length === 2) {
+    blocked = true;
+    setTimeout(() => blocked = false, 1100);
     if (
       flippedCards[0].getAttribute("name") ===
       flippedCards[1].getAttribute("name")
@@ -102,8 +109,10 @@ const checkCards = (e) => {
       console.log("wrong");
       flippedCards.forEach((card) => {
         card.classList.remove("flipped");
-        setTimeout(() => card.classList.remove("toggleCard"), 1100);
-        setTimeout(() => card.removeAttribute("style"), 1100);
+        setTimeout(() => {
+          card.classList.remove("toggleCard");
+          card.removeAttribute("style");
+        }, 1100);
       });
     }
   }
