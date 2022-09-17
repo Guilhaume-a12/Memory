@@ -18,4 +18,4 @@
 $titre = "O'Memory menu principal";
 $script = false;
 $content = ob_get_clean(); // ob_get_clean nous permet de récupérer la partie html ci-dessus, qui est délicatement rangée dans $content
-require_once "../app/Views/template/template.view.php"; // On appelle le template
+require_once __DIR__."/../template/template.view.php"; // On appelle le template

@@ -14,4 +14,4 @@
 $titre = "O'Memory nouvelle partie";
 $scripts = ['timer','memory','index'];
 $content = ob_get_clean();
-require_once "../app/Views/template/template.view.php"; // On appelle le template
+require_once __DIR__."/../template/template.view.php"; // On appelle le template

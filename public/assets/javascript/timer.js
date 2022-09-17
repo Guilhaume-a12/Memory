@@ -2,6 +2,8 @@ const timerDiv = document.querySelector(".timer");
 
 let interval = 120;
 let newGame = true;
+let blocked = false;
+let gameStarted = false;
 
 const timerGenerator = () => {
   const title = document.createElement("h1");
@@ -25,7 +27,8 @@ const timerGenerator = () => {
 };
 
 const timerHidden = () => {
-
+    gameStarted = false;
+    
   while (timerDiv.firstChild) {
     timerDiv.removeChild(timerDiv.firstChild);
   }
@@ -43,6 +46,7 @@ const timerHidden = () => {
   button.innerHTML = "START";
 
   button.addEventListener("click", () => {
+    gameStarted = true;
     blocked = false;
     timerStart();
   });
@@ -66,7 +70,7 @@ const defaultP = document.querySelector(".defaultP");
 
   defaultP.innerHTML = "C'EST PARTI !";
 
-  var countDown = setInterval(() => {
+  let countDown = setInterval(() => {
     interval--;
 
     let progressWidth = (interval / 120) * 100;
@@ -81,7 +85,7 @@ const defaultP = document.querySelector(".defaultP");
       progressInner.style.background = "red";
     }
 
-    if (interval > 110) {
+    if (interval > 0) {
       progressInner.style.width = progressWidth + "%";
       span.innerHTML = interval + "s";
     } else {
@@ -90,5 +94,10 @@ const defaultP = document.querySelector(".defaultP");
       span.innerHTML = "Game Over";
       loose();
     }
+    if (!gameStarted) {
+        clearInterval(countDown);
+      }
   }, 1000);
+
 };
+

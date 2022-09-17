@@ -1,10 +1,6 @@
 // ******************************* On stock les éléments dont on a besoin ********************
 const section = document.querySelector(".memorySection");
 
-// ************************** On déclare nos variables ************************************
-var blocked = false;
-let gameStarted = false;
-
 // ************************ On génère les données des cartes en objet *************************
 const getData = () => [
   { imgSrc: "assets/images/avocat.png", name: "avocat" },
@@ -93,7 +89,7 @@ const checkCards = (e) => {
 
   if (flippedCards.length === 2) {
     blocked = true;
-    setTimeout(() => (blocked = false), 1100);
+    setTimeout(() => (blocked = false), 1000);
     if (
       flippedCards[0].getAttribute("name") ===
       flippedCards[1].getAttribute("name")
@@ -122,6 +118,7 @@ const checkCards = (e) => {
 
 // ********************************* Fonction qui permet de recommencer à la fin d'une partie ****************************
 const restart = () => {
+    blocked = true;
   let cardData = randomize();
   let faces = document.querySelectorAll(".face");
   let cards = document.querySelectorAll(".card");
@@ -142,9 +139,10 @@ const win = () => {
     newGame = false;
   setTimeout(() => {
     alert("GG well played !");
+    addScore(prompt('Entrez votre pseuso pour enregistrer votre score'),interval);
     if (confirm("Voulez vous rejouer ?")) {
       restart();
-      timerGenerator();
+      timerHidden();
     } else {
       window.location.href = "menu";
     }
@@ -163,4 +161,40 @@ const loose = () => {
           window.location.href = "menu";
         }
       }, 1100);
+}
+
+const addScore = (pseudo,timeLeft) => {
+    let score = {
+        pseudo: pseudo,
+        score: timeLeft
+    }
+console.log(JSON.stringify(score));
+    fetch("add-score", {
+        method:"POST",
+        body:JSON.stringify(score)
+    })
+
+    .then((response) => {
+      console.log(response.status);
+        if (response.status === 201) {
+            alert('Votre score a bien été ajouté');
+        }
+
+        return response.json();
+    })
+
+    .then((response) => {
+
+        if (response.message !== "success") {
+            throw new Error(response.message);
+        }
+
+        console.log(response);
+    })
+
+    .catch(err => {
+        alert(err);
+        console.log(err);
+    })
+
 }

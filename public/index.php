@@ -1,7 +1,7 @@
 <?php
 
 // On require autoload.php afin de pouvoir utiliser l'autoloader fourni par composer
-require "../vendor/autoload.php";
+require __DIR__."/../vendor/autoload.php";
 
 // On "appelle" le MainController pour pouvoir l'utiliser dans notre routeur, sous l'alias Main
 use App\Controllers\MainController as Main;
@@ -32,6 +32,9 @@ try {
             case "new":
                 // on appelle la vue d'une nouvelle partie
                 $memoryController->newGame();
+                break;
+            case "add-score":
+                $memoryController->addScores();
                 break;
             default:
                 // si aucune url correspond, on catch une erreur 
