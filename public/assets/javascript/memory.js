@@ -1,11 +1,11 @@
-//On stock les éléments dont on a besoin
+// ******************************* On stock les éléments dont on a besoin ********************
 const section = document.querySelector(".memorySection");
 
-// On déclare nos variables
-let blocked = false;
+// ************************** On déclare nos variables ************************************
+var blocked = false;
 let gameStarted = false;
 
-// On génère les données des cartes en objet
+// ************************ On génère les données des cartes en objet *************************
 const getData = () => [
   { imgSrc: "assets/images/avocat.png", name: "avocat" },
   { imgSrc: "assets/images/banane.png", name: "banane" },
@@ -37,14 +37,14 @@ const getData = () => [
   { imgSrc: "assets/images/pomme.png", name: "pomme" },
 ];
 
-//On randomise le tableau de nos carte, on le "mélange"
+// ***************************** On randomise le tableau de nos carte, on le "mélange" ****************************
 const randomize = () => {
   const cardData = getData(); // On récupère le tableau des cartes, et on le stock dans cardData
   cardData.sort(() => Math.random() - 0.5); // Mélange le tableau de façon aléatoire
   return cardData;
 };
 
-// On génère les cartes côté HTML
+// ************************ On génère les cartes côté HTML ******************************
 const cardGenerator = () => {
   const cardData = randomize();
 
@@ -71,22 +71,20 @@ const cardGenerator = () => {
     //  </div>
     //</div>
 
-   
     card.addEventListener("click", (e) => {
       if (!blocked) {
-      // quand on clic sur une carte, on ajoute la classe 'toggleCard'
-      card.classList.toggle("toggleCard");
-      card.style.pointerEvents = "none";
-      checkCards(e);
-    } else {
-      console.log('clics bloqués');
-    }
+        // quand on clic sur une carte, on ajoute la classe 'toggleCard'
+        card.classList.toggle("toggleCard");
+        card.style.pointerEvents = "none";
+        checkCards(e);
+      } else {
+        console.log("clics bloqués");
+      }
     });
-
   });
 };
 
-// on check les cartes
+// ***************** on check les cartes *********************
 const checkCards = (e) => {
   const clickedCard = e.target;
   clickedCard.classList.add("flipped");
@@ -95,7 +93,7 @@ const checkCards = (e) => {
 
   if (flippedCards.length === 2) {
     blocked = true;
-    setTimeout(() => blocked = false, 1100);
+    setTimeout(() => (blocked = false), 1100);
     if (
       flippedCards[0].getAttribute("name") ===
       flippedCards[1].getAttribute("name")
@@ -118,33 +116,51 @@ const checkCards = (e) => {
   }
 
   if (toggleCard.length === 28) {
-    setTimeout(() => {
-      alert("GG well played !");
-      if (confirm('Voulez vous rejouer ?')) {
-        restart();
-      } else {
-        window.location.href ="menu";
-      }
-    }, 1100);
+    win();
   }
 };
 
-// Fonction qui permet de recommencer à la fin d'une partie
+// ********************************* Fonction qui permet de recommencer à la fin d'une partie ****************************
 const restart = () => {
   let cardData = randomize();
-  let faces = document.querySelectorAll('.face');
-  let cards = document.querySelectorAll('.card');
+  let faces = document.querySelectorAll(".face");
+  let cards = document.querySelectorAll(".card");
   section.style.pointerEvents = "none";
 
   cardData.forEach((item, index) => {
-    cards[index].classList.remove('toggleCard');
+    cards[index].classList.remove("toggleCard");
     setTimeout(() => {
       cards[index].removeAttribute("style");
       faces[index].src = item.imgSrc;
-      cards[index].setAttribute('name', item.name);
+      cards[index].setAttribute("name", item.name);
       section.removeAttribute("style");
     }, 1100);
   });
-}
+};
 
-cardGenerator();
+const win = () => {
+    newGame = false;
+  setTimeout(() => {
+    alert("GG well played !");
+    if (confirm("Voulez vous rejouer ?")) {
+      restart();
+      timerGenerator();
+    } else {
+      window.location.href = "menu";
+    }
+  }, 1100);
+};
+
+const loose = () => {
+    newGame = false;
+    blocked = true;
+    setTimeout(() => {
+        alert("You loose...");
+        if (confirm("Voulez vous rejouer ?")) {
+            timerHidden();
+            restart();
+        } else {
+          window.location.href = "menu";
+        }
+      }, 1100);
+}
