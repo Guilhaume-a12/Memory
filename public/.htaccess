@@ -1,4 +1,4 @@
-# Ce fichier nous permet de réécrire l'url, peut importe l'url qu'on passe, tout ira dans index.php
+# Ce fichier nous permet de réécrire l'url, peu importe l'url qu'on passe, tout ira dans index.php
 # et tout les paramètre dans $_GET['url']
 
 <IfModule mod_rewrite.c>

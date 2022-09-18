@@ -5,9 +5,10 @@ namespace App\Controllers;
 class MainController 
 {
     // Cette méthode appelle simplement la vue du menu principal
+    // la variables $navHidden est la tout simplement pour savoir si je dois cacher ou afficher la navbar
     public function menu()
     {
         $navHidden = false;
-        require '../app/Views/memory/home.view.php';
+        require __DIR__.'/../Views/memory/home.view.php';
     }
 }
