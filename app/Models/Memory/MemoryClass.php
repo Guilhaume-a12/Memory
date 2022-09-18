@@ -13,16 +13,16 @@ class MemoryClass
 
     public function getPseudo()
     {
-        return $this->pseudo;
+        return htmlspecialchars($this->pseudo);
     }
 
     public function getTimeLeft()
     {
-        return $this->timeLeft;
+        return htmlspecialchars($this->timeLeft);
     }
 
     public function getId_memory()
     {
-        return $this->id_memory;
+        return htmlspecialchars($this->id_memory);
     }
 }

@@ -55,6 +55,7 @@ nav a:hover {
 .timer p {
   font-weight: bold;
   font-size: 18px;
+  margin: 0 !important;
 }
 .timer p span {
   font-weight: normal;
