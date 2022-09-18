@@ -36,6 +36,12 @@ try {
             case "add-score":
                 $memoryController->addScores();
                 break;
+            case "display-scores":
+                // afficher les scores dans une page
+                break;
+            case "get-scores":
+                $memoryController->getScores();
+                break;
             default:
                 // si aucune url correspond, on catch une erreur 
         }

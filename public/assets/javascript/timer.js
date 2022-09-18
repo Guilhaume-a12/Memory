@@ -1,5 +1,6 @@
 const timerDiv = document.querySelector(".timer");
 
+
 let interval = 120;
 let newGame = true;
 let blocked = false;
@@ -33,6 +34,7 @@ const timerHidden = () => {
     timerDiv.removeChild(timerDiv.firstChild);
   }
 
+
   const button = document.createElement("button");
   button.classList = "btn-start";
 
@@ -41,6 +43,10 @@ const timerHidden = () => {
 
   timerDiv.appendChild(defaultP);
   timerDiv.appendChild(button);
+
+  if (newGame) {
+  getScores();
+  }
 
   defaultP.innerHTML = "Nouvelle partie, appuyez sur START pour commencer";
   button.innerHTML = "START";
@@ -53,8 +59,9 @@ const timerHidden = () => {
 };
 
 const timerStart = () => {
+  const scoresDiv = document.querySelector(".scores");
     const button = document.querySelector(".btn-start");
-const defaultP = document.querySelector(".defaultP");
+  const defaultP = document.querySelector(".defaultP");
   interval = 120;
 
   if (newGame) {
@@ -63,6 +70,10 @@ const defaultP = document.querySelector(".defaultP");
 
   timerGenerator();
 
+  if (newGame) {
+  scoresDiv.remove();
+  }
+  
   button.remove();
 
   const progressInner = document.querySelector(".progress-inner");
@@ -100,4 +111,3 @@ const defaultP = document.querySelector(".defaultP");
   }, 1000);
 
 };
-

@@ -7,10 +7,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    list-style: none;
+
+    ul {
+        padding: 0;
+    }
 }
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -37,11 +42,9 @@ nav {
     height: 500px;
 
     ul {
-        padding: 0;
         margin: 10px;
 
         li {
-            list-style: none;
             
             a {
                 font-size: v.$font_size1;
@@ -100,6 +103,7 @@ nav {
         background-color: v.$color_3;
         color: v.$color_1;
         box-shadow: rgba(0, 0, 0,0.5) 0px 5px 15px;
+        text-shadow: 0 0 15px v.$color_2;
 
         &:hover {
             transition: all 0.3s ease-in-out;
@@ -151,4 +155,30 @@ nav {
         transform: rotateY(180deg);
     }
 
+}
+
+// SCORES
+.scores {
+    background-color: v.$color_1;
+    padding: 1rem 2rem;
+    border: 1px v.$color_3 solid;
+    border-radius: 1rem;
+    box-shadow: v.$color_3 0px 5px 20px;
+
+    h1 {
+        margin-bottom: 3rem;
+        text-shadow: 0 0 10px v.$color_2;
+        color: v.$color_2;
+    }
+    ul {
+        li {
+            display: flex;
+            justify-content: space-between;
+            color: v.$color_3;
+
+            span {
+                text-shadow: 0 0 10px v.$color_3;
+            }
+        }
+    }
 }

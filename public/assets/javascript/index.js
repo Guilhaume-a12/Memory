@@ -42,4 +42,3 @@ timerHidden();
 //   setTimeout(() => defaultP.innerHTML = "Déjà une minute, attention !", 60000);
 // })
 
-

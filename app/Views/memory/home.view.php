@@ -6,13 +6,13 @@
             <h1 class="my-5">O'Memory</h1>
             <ul class="pt-4">
                 <li><a href="<?= ROOT ?>new" class="btn rounded mb-2">Nouvelle partie</a></li>
-                <li><a href="#" class="btn rounded mb-2">Scores</a></li>
-                <li><a href="#" class="btn rounded mb-2">Crédits</a></li>
+                <li><a href="#" class="btn rounded mb-2">Scores*</a></li>
+                <li><a href="#" class="btn rounded mb-2">Crédits*</a></li>
             </ul>
+            <small>*Ces liens sont en construction</small>
         </div>
     </div>
 </section>
-
 
 <?php
 $titre = "O'Memory menu principal";

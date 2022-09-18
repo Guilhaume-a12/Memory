@@ -8,6 +8,16 @@
     <title><?= $titre ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="<?= ROOT ?>assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" defer></script>
+    <?php
+    if (isset($scripts)) {
+        foreach ($scripts as $script) {
+    ?>
+            <script src="<?= ROOT ?>assets/javascript/<?= $script ?>.js" defer></script>
+    <?php
+        }
+    }
+    ?>
 </head>
 
 <body>
@@ -25,6 +35,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="<?= ROOT ?>menu">Menu principal</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Scores</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -37,16 +50,6 @@
         pour afficher notre vue à cette endroit précis du template -->
     <?= $content ?>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
-    <?php
-    if (isset($scripts)) {
-        foreach ($scripts as $script) {
-    ?>
-            <script src="<?= ROOT ?>assets/javascript/<?= $script ?>.js"></script>
-    <?php
-        }
-    }
-    ?>
 </body>
 
 </html>

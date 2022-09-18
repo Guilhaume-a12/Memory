@@ -1,5 +1,7 @@
 // ******************************* On stock les éléments dont on a besoin ********************
+const body = document.querySelector("body");
 const section = document.querySelector(".memorySection");
+
 
 // ************************ On génère les données des cartes en objet *************************
 const getData = () => [
@@ -43,6 +45,10 @@ const randomize = () => {
 // ************************ On génère les cartes côté HTML ******************************
 const cardGenerator = () => {
   const cardData = randomize();
+
+  const section = document.createElement("section");
+  section.classList = "memorySection";
+  body.appendChild(section);
 
   cardData.forEach((item) => {
     const card = document.createElement("div");
@@ -111,13 +117,15 @@ const checkCards = (e) => {
     }
   }
 
-  if (toggleCard.length === 28) {
+  if (toggleCard.length === 2) {
     win();
   }
 };
 
 // ********************************* Fonction qui permet de recommencer à la fin d'une partie ****************************
 const restart = () => {
+  const section = document.querySelector(".memorySection");
+
     blocked = true;
   let cardData = randomize();
   let faces = document.querySelectorAll(".face");
@@ -149,6 +157,7 @@ const win = () => {
   }, 1100);
 };
 
+
 const loose = () => {
     newGame = false;
     blocked = true;
@@ -163,12 +172,13 @@ const loose = () => {
       }, 1100);
 }
 
+
 const addScore = (pseudo,timeLeft) => {
     let score = {
         pseudo: pseudo,
         score: timeLeft
     }
-console.log(JSON.stringify(score));
+
     fetch("add-score", {
         method:"POST",
         body:JSON.stringify(score)
@@ -196,5 +206,56 @@ console.log(JSON.stringify(score));
         alert(err);
         console.log(err);
     })
+}
 
+
+const getScores = () => {
+
+  const scoresDiv = document.createElement("div");
+  const title = document.createElement("h1");
+  const ul = document.createElement("ul");
+
+  scoresDiv.classList = "scores";
+  body.appendChild(scoresDiv);
+
+  scoresDiv.appendChild(title);
+  scoresDiv.appendChild(ul);
+
+  title.innerHTML = "Top 10";
+
+
+  fetch("get-scores", {
+      method:"GET",
+  })
+
+  .then((response) => {
+    console.log(response.status);
+      if (response.status === 200) {
+          return response.json();
+      }  
+  })
+
+  .then((response) => {
+  
+    for(let i = 1; i <= 10; i++) {
+      const li = document.createElement("li");
+      const span = document.createElement("span");
+      const p = document.createElement("p");
+
+      ul.appendChild(li);
+      li.appendChild(p);
+      li.appendChild(span);
+      p.innerHTML = i+". "+response[i].pseudo+" ";
+      span.innerHTML = response[i].score;
+    }
+      
+      if (response.message !== "success") {
+          throw new Error(response.message);
+      }
+  })
+
+  .catch(err => {
+      alert(err);
+      console.log(err);
+  })
 }
