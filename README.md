@@ -1,6 +1,6 @@
 # O'Memory
 
-<img src="public/assets/images/oclock.jpg">
+<img src="public/assets/images/lananas.png">
 
 Vous rêviez de découvrir comment coder l'emblématique jeu du Mémory ?? 
 Je l'ai fait pour vous !
