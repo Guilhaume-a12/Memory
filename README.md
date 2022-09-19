@@ -1,12 +1,28 @@
 # O'Memory
 
+<img src="public/assets/images/oclock.jpg">
+
 Vous rêviez de découvrir comment coder l'emblématique jeu du Mémory ?? 
 Je l'ai fait pour vous !
 
 Laissez moi vous expliquer comment le projet est organisé dans les grandes lignes. Pour plus de détails, 
 le code est rempli de commentaires.
 
-Sur ce projet, qui est ni plus ni moins le jeu du Mémory, vous allez découvrir le modèle MVC (qui est le design pattern le plus utilisé, mais qui est loin d'être le seul), diverses méthodes et logiques algorythmiques pour le côté frontend par le biais de nombreux commentaire directement dans le code.
+Sur ce projet, qui est ni plus ni moins le jeu du Mémory, vous allez découvrir le modèle MVC (qui est le design pattern le plus utilisé, mais qui est loin d'être le seul), diverses méthodes et logiques algorythmiques pour le côté frontend par le biais de nombreux commentaires directement dans le code.
+
+## ✅ Recquis
+
+- Un environnement de travail comme WAMP, LAMP ou XAMPP
+- Le projet doit être installé dans un virtual host qui cible le dossier public
+- Beaucoup d'amour et un ordinateur
+
+## 🚀 Technologies
+
+- PHP
+- Javascript
+- SCSS
+- Composer
+- Npm
 
 ## Le modèle MVC ok, mais c'est quoi concrètement ?
 
@@ -35,6 +51,3 @@ Ce dossier contiendra tout nos contrôleurs. Ceux sont les contrôleurs qui gèr
 Dans le modèle MVC, nous avons également un routeur qui recevra la requête HTTP envoyé par l'utilisateur, et appellera le contrôleur nécessaire.
 Pour toujours passer par le routeur, on utilise un fichier .htaccess pour réécrire l'url, et en plus c'est SEO friendly !
 
-### Installer le projet en local
-
-La partie BACKEND est en PHP, il va donc vous falloir un serveur pour interpréter PHP.
