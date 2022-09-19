@@ -1,5 +1,5 @@
 <?php
-// Dans ce namespace, je rajoute Memory à la fin car nous somme dans le dossier Memory
+// Dans ce namespace, je rajoute Memory à la fin car nous sommes dans le dossier Memory
 namespace App\Models\Memory;
 
 use App\Models\Model;

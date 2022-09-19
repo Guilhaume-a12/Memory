@@ -1,10 +1,10 @@
 // Pour compiler sass, la commande "npm run sass" a été configuré dans le fichier package.json, dans la partie "scripts"
 // Il reste plus qu'à lancer cette commande dans le terminal, pour que le scss soit "traduit" dans le fichier css
 
-// J'apelle le fichier qui contient toutes nos variables
+// J'appelle le fichier qui contient toutes nos variables
 // Attention à bien enlever l'underscore du nom du fichier dans le @use
 // En revanche il faut bel est bien le mettre quand on nomme le fichier
-// Je lui donne l'alias "v", je devrais donc utiliser les variables de ce fichier comme ceci: v.$maVariable
+// Je lui donne l'alias "v", je dois donc utiliser les variables de ce fichier comme ceci: v.$maVariable
 @use 'partials/variables' as v; 
 
 // J'effectue un mini reset, dans ce projet pas besoin de plus
@@ -46,7 +46,7 @@ nav {
 // MENU
 .menuBg {
     background-color: v.$color_3;
-    height: 500px;
+    height: 30rem;
 
     ul {
         margin: 10px;
@@ -95,6 +95,8 @@ nav {
 
         .progress-inner {
             background-color: green;
+            // La position absolute (contrairement à l'élément parent qui est en position relative),
+            // permet d'afficher l'élément par dessus son parent, pareil pour les cartes du memory
             position: absolute;
             width: 100%;
             height: 100%;
@@ -140,7 +142,7 @@ nav {
     .card {
         position: relative;
         transform-style: preserve-3d;
-        transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         box-shadow: rgba(0, 0, 0,0.5) 0px 5px 15px;
         cursor: pointer;
     }
@@ -155,6 +157,7 @@ nav {
     .back {
         background-image: url('../../assets/images/oclock.jpg');
         background-size: cover;
+        // J'empêche le dos de la carte de s'afficher lorsqu'elle est retournée
         backface-visibility: hidden;
         border-radius: 5px;
     }

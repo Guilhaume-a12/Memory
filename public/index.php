@@ -12,7 +12,7 @@ use App\Controllers\MemoryController as Memory;
 $mainController = new Main();
 $memoryController = new Memory();
 
-// On récupère la racine du nom du 'site', ça nous sera utile pour le chargement d'image par exemple ou les href, pour trouver le bon chemin facilement
+// On récupère la racine du nom du 'site', cela nous sera utile pour le chargement d'image par exemple ou les href, pour trouver le bon chemin facilement
 define("ROOT", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF']));
 
 
@@ -34,18 +34,25 @@ try {
                 $memoryController->newGame();
                 break;
             case "add-score":
+                // on ajoute les scores en base de données
                 $memoryController->addScores();
                 break;
             case "display-scores":
                 // afficher les scores dans une page
+                $memoryController->displayScores();
                 break;
             case "get-scores":
+                // On récupère les scores de la base de données
                 $memoryController->getScores();
                 break;
             default:
-                // si aucune url correspond, on catch une erreur 
+                // si aucune url correspond, on catch une erreur avec un message
+                throw new Exception('Erreur 404, la page que vous recherchez n\'existe pas...');
         }
     }
 } catch (Exception $e) {
-    // Erreur 404, c'est ici qu'on l'appelle en cas d'url inexistante
+    // Erreur 404, c'est ici qu'on utilise la méthode qui appelle la vue de l'erreur 404 en cas de mauvaise url
+    // Je récupère le message d'erreur grace à la méthode d'Exception, getMessage()
+    $msg = $e->getMessage();
+    $mainController->error404($msg);
 }

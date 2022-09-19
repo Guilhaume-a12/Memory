@@ -11,4 +11,11 @@ class MainController
         $navHidden = false;
         require __DIR__.'/../Views/memory/home.view.php';
     }
+
+    // Cette méthode appelle la vue de l'erreur 404, en cas d'url inexistante
+    public function error404($msg) {
+        $navHidden = false;
+        $message = $msg;
+        require __DIR__.'/../Views/error/error404.view.php';
+    }
 }

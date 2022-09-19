@@ -9,17 +9,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="<?= ROOT ?>assets/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" defer></script>
-    <!-- Si la variable $scripts est initialisée je créé une boucle foreach pour la parcourir
+    <!-- Si la variable $scripts est initialisée, je créé une boucle foreach pour la parcourir
         Elle contient le nom de chaque fichier javascript, 
         et pour chacun d'entre eux, je créé la balise script pour les lier à mon HTML -->
     <?php
     if (isset($scripts)) {
         foreach ($scripts as $script) {
     ?>
-            <!-- D'habitude les balises scripts sont à la fin du body
+            <!-- D'habitude, les balises scripts sont à la fin du body
             Dans mon cas, pour simplifier des fonctionnalités javascript
             j'ai décidé de les placer dans le head avec l'attribut "defer",
-            grace à lui, ces scripts seront interprétés après le chargement de la page -->
+            grâce à lui, ces scripts seront interprétés après le chargement de la page -->
             <script src="<?= ROOT ?>assets/javascript/<?= $script ?>.js" defer></script>
     <?php
         }
@@ -45,7 +45,7 @@
                             <a class="nav-link active" href="<?= ROOT ?>menu">Menu principal</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Scores</a>
+                            <a class="nav-link active" href="<?= ROOT ?>display-scores">Scores</a>
                         </li>
                     </ul>
                 </div>

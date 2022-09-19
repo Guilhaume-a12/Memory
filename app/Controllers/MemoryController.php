@@ -61,21 +61,27 @@ class MemoryController
 
     public function displayScores()
     {
-        // afficher scores
+        $navHidden = false;
+        $scores = $this->memoryManager->getScoresDB();
+        require __DIR__.'/../Views/memory/scores.view.php';
     }
 
     public function getScores()
     {
+        // Ici même chose que les headers de la méthode précédente, mais pour la méthode GET
         header("Content-Type: application/json; charset=UTF-8");
         header("Access-Control-Allow-Methods: GET");
 
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
+            // J'appelle la méthode du manager qui récupère les infos en base de données
             $scores = $this->memoryManager->getScoresDB();
 
+            // J'initialise un tableau vide + un compteur que je vais utiliser pour afficher des index à partir de 1 et non de 0
             $tab = [];
             $count = 1;
 
+            // Pour chaque valeur récupérée, j'incrémente mon tableau d'un tableau contenant les données
             foreach ($scores as $value) {
                 $tab[$count] = [
                     "id" => $value->getId_memory(),
@@ -84,8 +90,9 @@ class MemoryController
                 ];
                 $count++;
             }
+            // J'y ajoute aussi un petit tableau contenant le message success
             $tab['message'] = "success";
-
+            // J'appelle la méthode sendJson qui va envoyer ces données au FRONT
             $this->sendJson($tab);
         } else {
             http_response_code(405);
@@ -93,6 +100,7 @@ class MemoryController
         }
     }
 
+    // Cette méthode renvoie le code http 200, convertit les données en json et l'envoie à la partie FRONT
     public function sendJson($data)
     {
         http_response_code(200);

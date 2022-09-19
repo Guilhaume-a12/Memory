@@ -75,7 +75,7 @@ const timerHidden = () => {
   // Je met un addEventListener sur le bouton créé précédemment
   // Grace à lui, on déclenchera un évènement quand on cliquera dessus
   button.addEventListener("click", () => {
-    // Je passe la variale gameStarted à true, elle me sera utile pour confirmer que la partie a bien démarée
+    // Je passe la variale gameStarted à true, elle me sera utile pour confirmer que la partie a bien démarré
     gameStarted = true;
     // Je passe la variable blocked à false pour autoriser les clics
     blocked = false;
@@ -132,15 +132,15 @@ const timerStart = () => {
     // Je décrémente la variable (qui est initialisée a 120) de 1, toutes les secondes grace au setInterval()
     interval--;
 
-    // Ici je convertie 120 en 100%, ce sera utile pour qu'à chaque seconde, pendant 120 secondes,
+    // Ici je convertis 120 en 100%, ce sera utile pour qu'à chaque seconde, pendant 120 secondes,
     // un pourcentage proportionnel à 1 seconde sur 120 soit retiré
     // J'utiliserai ce 100% pour la valeur initiale de la width de la barre de progression
-    // De ce fait, chaque seconde elle diminuera de façon proportionnelle
+    // De ce fait, chaque seconde, elle diminuera de façon proportionnelle
     let progressWidth = (interval / 120) * 100;
 
     // En fonction de la valeur d'interval, j'affiche la barre de progression d'une couleur différente
     // Plus la valeur d'interval est élevé, plus la barre est verte, plus la valeur diminue, plus la barre est rouge
-    // Pour changer la couleur je place un attribut style directement par javascript
+    // Pour changer la couleur, je place un attribut style directement par javascript
     if (interval > 60) {
       progressInner.style.background = "green";
     } else if (interval > 40) {
@@ -160,7 +160,7 @@ const timerStart = () => {
     } else {
       // Si la valeur d'interval n'est plus supérieur à 0
       // J'annule le setInterval à l'aide de clearInterval() avec en paramètre, la référence du setInterval
-      // Ici c'est countDown, le nom de la variable dans la quelle il est créé
+      // Ici c'est countDown, le nom de la variable dans laquelle il est créé
       clearInterval(countDown);
       // Je passe la width de la barre de progression à 0%
       progressInner.style.width = "0%";

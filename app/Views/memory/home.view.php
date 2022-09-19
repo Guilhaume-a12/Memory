@@ -1,6 +1,10 @@
 <?php ob_start(); ?>
 <!-- ob_start met en attente la partie vue qui suit -->
 <section class="container text-center">
+    <!-- Les classes comme .container, .d-flex, .col-6 sont des classes de bootstrap
+    C'est un framework CSS qui contient tout une panoplie de classes déjà créées
+    il nous suffit juste de définir la classe sur un élément HTML pour que les modifications CSS prennent effet
+    Pour savoir lesquelles utiliser, la doc sur le site officiel est très détaillée !  -->
     <div class="row d-flex justify-content-center">
         <div class="col-6 menuBg border border-dark">
             <h1 class="my-5">O'Memory</h1>
@@ -8,7 +12,7 @@
                 <!-- la constante ROOT est donc déclarée dans l'index.php (le routeur) 
                 elle aide le href à trouver le chemin exact sans créer de bug -->
                 <li><a href="<?= ROOT ?>new" class="btn rounded mb-2">Nouvelle partie</a></li>
-                <li><a href="#" class="btn rounded mb-2">Scores*</a></li>
+                <li><a href="<?= ROOT ?>display-scores" class="btn rounded mb-2">Scores</a></li>
                 <li><a href="#" class="btn rounded mb-2">Crédits*</a></li>
             </ul>
             <small>*Ces liens sont en construction</small>
@@ -21,10 +25,10 @@
 $titre = "O'Memory menu principal";
 
 // ob_get_clean nous permet de récupérer la partie html ci-dessus, qui est délicatement rangée dans $content
-// Cela nous permettra d'afficher cette vue, ou l'on souhaite dans le template en affichant $content
+// Cela nous permettra d'afficher cette vue, où l'on souhaite dans le template en affichant $content
 // Sinon elle serait affichée au dessus de notre template vu qu'il est require tout en bas de la page
 $content = ob_get_clean(); 
 
 // On appelle le template, on utilise __DIR__, c'est une bonne pratique,
-// cela contient le chemin exact du dossier dans lequel nous somme, c'est une constante magique
+// cela contient le chemin exact du dossier dans lequel nous sommes, c'est une constante magique
 require_once __DIR__."/../template/template.view.php"; 

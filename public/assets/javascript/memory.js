@@ -35,12 +35,12 @@ const getData = () => [
   { imgSrc: "assets/images/pomme.png", name: "pomme" },
 ];
 
-// ***************************** On randomise le tableau de nos carte, on le "mélange" ****************************
+// ***************************** On randomise le tableau de nos cartes, on le "mélange" ****************************
 const randomize = () => {
   // Je récupère le tableau des cartes, et je le stocke dans cardData
   const cardData = getData(); 
 
-  // Je mélange le tableau de façon aléatoire à laide de sort()
+  // Je mélange le tableau de façon aléatoire à l'aide de sort()
   cardData.sort(() => Math.random() - 0.5); 
 
   // Je return cardData pour pouvoir le réutiliser plus tard
@@ -59,7 +59,7 @@ const cardGenerator = () => {
   // Je la place à la fin de notre body
   body.appendChild(section);
 
-  // A l'aide d'un foreach, j'effectue des instructions pour chaque cartes de cadrData
+  // A l'aide d'un foreach, j'effectue des instructions pour chaque carte de cadrData
   cardData.forEach((item) => {
 
     // Je créé les éléments html
@@ -79,7 +79,7 @@ const cardGenerator = () => {
 
     // Dans l'attribut src="" de la balise img, on place la propriété imgSrc de notre objet
     face.src = item.imgSrc; 
-    // Je créé l'attibut name dans la div de chaque cartes, avec le nom de la carte correspondante configuré dans l'objet
+    // Je créé l'attibut name dans la div de chaque carte, avec le nom de la carte correspondante configuré dans l'objet
     card.setAttribute("name", item.name);
 
     // Pour chaque carte, j'ai créé ceci:
@@ -153,7 +153,7 @@ const checkCards = (e) => {
       // J'affiche dans la console "wrong"
       console.log("wrong");
 
-      // Pour chacune d'entre elles, j'eblève la classe flipped, et j'autorise à nouveau les clics en enlevant l'attribut style
+      // Pour chacune d'entre elle, j'enlève la classe flipped, et j'autorise à nouveau les clics en enlevant l'attribut style
       flippedCards.forEach((card) => {
         card.classList.remove("flipped");
         setTimeout(() => {
@@ -183,7 +183,7 @@ const restart = () => {
   // Si j'affichais de suite ces changements, nous les verrions avant l'animation des cartes qui se retournent
   let cardData = randomize();
 
-  // je stocke les élément html qui contiennent les cartes
+  // je stocke les éléments html qui contiennent les cartes
   let faces = document.querySelectorAll(".face");
   let cards = document.querySelectorAll(".card");
 
@@ -212,9 +212,9 @@ const win = () => {
   // Je passe la variable newGame à False, pour indique au programme que les prochaines parties ne sont pas les premières
     newGame = false;
 
-  // 1 seconde après que toutes les cartes soient retournées, j'annonce la victoire vie une alert(),
+  // 1 seconde après que toutes les cartes soient retournées, j'annonce la victoire via une alert(),
   // ensuite j'appelle la fontion addScore, qui va demander le pseudo du joueur (via prompt()) 
-  // puis envoyer le score côté BACKEND pour l'ajouter en BAse de Données.
+  // puis envoyer le score côté BACKEND pour l'ajouter en Base de Données.
   // Ensuite je demande, grace à confirm(), si l'utilisateur veut rejouer ou pas
   // Si oui, j'appelle restart() et timerHidden()
   // Si non, je renvoie tout simplement sur le menu principal.
@@ -252,8 +252,8 @@ const loose = () => {
 }
 
 // **************************** Fonction qui envoie le score à la partie BACKEND **********************************
-// je fais passer deux paramètre: pseudo et timeLeft
-// pseudo contiendra le pseudo entré par l'utilisateur et timeLeft le temps qui lui resté en guise de score
+// je fais passer deux paramètres: pseudo et timeLeft
+// pseudo contiendra le pseudo entré par l'utilisateur et timeLeft le temps qui lui reste en guise de score
 const addScore = (pseudo,timeLeft) => {
 
   // je créé un objet score, qui contiendra les deux paramètres
@@ -265,7 +265,7 @@ const addScore = (pseudo,timeLeft) => {
   // Je créé un fetch vers l'url prévu, côté back, pour ajouter un nouveau score en Base de Données
   // Cela me permet d'échanger des données avec le serveur, mais de façon asynchrone 
     fetch("add-score", {
-      // Je définie la méthode, POST dans ce cas précis
+      // Je définis la méthode, POST dans ce cas précis
         method:"POST",
       // Je passe l'objet créé en une chaine de caractères JSON
         body:JSON.stringify(score)
@@ -342,7 +342,7 @@ const getScores = () => {
   })
 
   .then((response) => {
-  // Les scores récupérés, je fini de créer l'affichage
+  // Les scores récupérés, je finis de créer l'affichage
   // Je créé donc une boucle pour créer 10 li dans la balise ul
   // Dans chaque li, j'y met une balise p et span, qui contiendront le pseudo et le score
     for(let i = 1; i <= 10; i++) {
