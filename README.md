@@ -10,7 +10,7 @@ le code est rempli de commentaires.
 
 Sur ce projet, qui est ni plus ni moins le jeu du Mémory, vous allez découvrir le modèle MVC (qui est le design pattern le plus utilisé, mais qui est loin d'être le seul), diverses méthodes et logiques algorythmiques pour le côté frontend par le biais de nombreux commentaires directement dans le code.
 
-## ✅ Recquis
+## ✅ Requis
 
 - Un environnement de travail comme WAMP, LAMP ou XAMPP
 - Le projet doit être installé dans un virtual host qui cible le dossier public
